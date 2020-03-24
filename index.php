@@ -4,8 +4,6 @@ ini_set('display_errors', 'On');
 
 $start = microtime(true);
 
-use App\Abstracts\AbstractParser;
-
 function autoload(string $className)
 {
     require_once __DIR__ . DIRECTORY_SEPARATOR . $className . '.php';

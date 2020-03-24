@@ -1,6 +1,6 @@
 <?php
 
-namespace Logger;
+namespace App\Logger;
 class Logger
 {
     const LEVEL_ERROR = 1;

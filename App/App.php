@@ -3,10 +3,10 @@
 namespace App;
 
 use App\Actions\MainAction;
+use App\Logger\Logger;
 use App\MediaService\MediaService;
 use App\ProviderService\ProviderService;
 use GuzzleHttp\Client;
-use Logger\Logger;
 
 class App
 {
