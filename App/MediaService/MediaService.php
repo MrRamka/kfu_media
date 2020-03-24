@@ -21,7 +21,7 @@ class MediaService
         return file_exists($this->_path . md5($link) . '.txt');
     }
 
-    public function proccessLink(string $link, AbstractArticleParser $articleParser): void
+    public function processLink(string $link, AbstractArticleParser $articleParser): void
     {
         //TODO articles updating
 

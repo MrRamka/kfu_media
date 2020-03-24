@@ -33,7 +33,7 @@ class Parser extends AbstractParser
         foreach ($links as $link) {
 
             // осуществляем добавление статьи в базу
-            App::$app->mediaService()->proccessLink($link->attr('href'), $article);
+            App::$app->mediaService()->processLink($link->attr('href'), $article);
         }
 
     }
