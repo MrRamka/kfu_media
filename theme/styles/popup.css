@@ -1,0 +1,96 @@
+#login {
+    display: none;
+}
+
+.login-wrapper {
+    width: 320px;
+    height: 300px;
+    max-width: 100%;
+}
+
+.login-wrapper .popup-title {
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 21px;
+    color: #012a77;
+}
+
+.login-wrapper .pole {
+    margin-bottom: 15px;
+}
+
+.login-wrapper .pole .label {
+    float: left;
+    width: 100px;
+    line-height: 27px;
+    font-size: 16px;
+    color: #012a77;
+}
+
+.login-wrapper .pole input {
+    float: right;
+    padding: 0 5px;
+    width: calc(100% - 115px);
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    color: #4c4c4c;
+}
+
+.login-wrapper .after-pole {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.login-wrapper #remember {
+    display: none;
+}
+
+.login-wrapper .pole input::-webkit-input-placeholder {color:#4c4c4c;}
+.login-wrapper .pole input::-moz-placeholder          {color:#4c4c4c;}/* Firefox 19+ */
+.login-wrapper .pole input:-moz-placeholder           {color:#4c4c4c;}/* Firefox 18- */
+.login-wrapper .pole input:-ms-input-placeholder      {color:#4c4c4c;}
+
+.login-wrapper .pole input::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.login-wrapper .pole input::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.login-wrapper .pole input:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.login-wrapper .pole input:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.login-wrapper .pole input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.login-wrapper .pole input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.login-wrapper .pole input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.login-wrapper .pole input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+
+.login-wrapper label[for="remember"] span {
+    position: relative;
+    padding-left: 25px;
+    line-height: 36px;
+    font-size: 14px;
+    color: #018eff;
+    cursor: pointer;
+}
+
+.login-wrapper input[type="submit"] {
+    width: 120px;
+    height: 36px;
+    line-height: 36px;
+    border: none;
+    background-color: #018eff;
+    font-size: 16px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+}
+
+.login-wrapper input[type="submit"] {
+    float: right;
+}
+
+.login-wrapper .forgot {
+    float: left;
+}
+
+.login-wrapper .register {
+    float: right;
+}

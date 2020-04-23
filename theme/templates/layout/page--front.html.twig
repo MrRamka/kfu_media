@@ -1,0 +1,292 @@
+
+
+<div class="content-wrapper main">
+    <div class="loader-wrapper" style="display: none;">
+        <div class="cssload-loader">
+            <div class="cssload-inner cssload-one"></div>
+            <div class="cssload-inner cssload-two"></div>
+            <div class="cssload-inner cssload-three"></div>
+        </div>
+    </div>
+    <div id="search-area">
+        <form id="search" type="get"
+              action="https://kpfu.ru/search?searchid=2060946" >
+            <input type="text" placeholder="Что ищем?" name="text">
+            <input name="searchid" value="2060946" type="hidden">
+        </form>
+    </div>
+    {#
+    <div id="login">
+        <div class="login-wrapper">
+            <div class="popup-title">Вход в личный кабинет</div>
+            <form action="https://shelly.kpfu.ru/portal/private_office.authscript">
+                <div class="pole clearfix">
+                    <div class="label">Ваш логин</div>
+                    <input name="p_login" placeholder="введите логин" required="" type="text">
+                </div>
+                <div class="pole clearfix">
+                    <div class="label">Ваш пароль</div>
+                    <input name="p_pass" placeholder="введите пароль" required="" type="password">
+                </div>
+                <input name="p_url" value="https://media.kpfu.ru/kpfu_user/profile" type="hidden">
+                <input name="p_ss" value="1" type="hidden">
+                <div class="after-pole clearfix">
+                    <input value="Отправить" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    #}
+    <header>
+        <div class="header-top uk-clearfix">
+            {#<a class="login fancybox" href="#" data-fancybox="modal" data-src="#login">Вход</a>#}
+            {% if not logged_in %}
+                <a class="login loginPopup-trigger" href="#" >Вход</a>
+            {% else %}
+                <a class="login fancybox" id="user_name" href="#" data-fancybox="modal" data-src="#user_menu">{{ username }}</a>
+                <div id = "user_menu" style="display: none">
+                    <div class="login-wrapper">
+                        <div class="popup-title">Личный кабинет</div>
+                        <div>
+                            <ul>
+                                <li><a href="https://shelly.kpfu.ru/e-ksu/private_office.reauth?p_url=https://students.kpfu.ru">Личный кабинет</a></li>
+                                {% if editor %}
+                                    <li><a href = "/recomendet">Выпускающий редактор</a></li>
+                                    <li><a href = "/admin/content/anonses">Анонсы</a></li>
+                                    <li><a href="https://media.kpfu.ru/node/add/banner">Добавить баннер на главную страницу</a></li>
+                                    <li><a href="https://media.kpfu.ru/admin/banners">Список баннеров</a></li>
+                                    <li><a href="https://media.kpfu.ru/node/add">Добавить материал</a></li>
+                                    <li><a href="https://media.kpfu.ru/admin/editor/comments">Список комментариев</a></li>
+                                {% endif %}
+                                {% if archive %}
+                                    <li><a href="https://media.kpfu.ru/archive">Архив новостей</a></li>
+                                {% endif %}
+                                <li><a href="/user/logout">Выход</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="user_menu" class="uk-modal">
+                    <div class="uk-modal-dialog">
+                        <a class="uk-modal-close uk-close"></a>
+                        <div class="auth-block-title">Меню пользователя</div>
+                        <div>
+                            <ul>
+                                <li><a href="https://shelly.kpfu.ru/e-ksu/private_office.reauth?p_url=https://students.kpfu.ru">Личный кабинет</a></li>
+                                <li><a href="/admin/content">Содержимое</a></li>
+                                <li><a href="/user/logout">Выход</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <a class="home" href="https://kpfu.ru"><i data-icon=""></i></a>
+            <ul id="main-menu" >
+                <li><a href="//rector.kpfu.ru">Сайт ректора</a></li>
+                <li><a href="//admissions.kpfu.ru">Абитуриенту</a></li>
+                <li><a href="//students.kpfu.ru">Студенту</a></li>
+                <li><a href="//alumni.kpfu.ru">Выпускникам</a></li>
+                <li><a href="//career.kpfu.ru/">Работникам и работодателям</a></li>
+                <li><a href="//inno.kpfu.ru">Инновации</a></li>
+                {#<li><a href="//media.kpfu.ru">Медиа</a></li>#}
+                <li><a href="//museums.kpfu.ru">Музеи</a></li>
+                <li class="more closed" style="display: list-item;">
+                    <a href="javascript:void(0);">...</a>
+                    <ul id="overflow"><li><a href="//kpfu.ru/library">Библиотека</a></li><li><a href="//newspaper.kpfu.ru/">Газета "Казанский университет"</a></li><li><a href="//tv.kpfu.ru/">UNIVER TV</a></li><li><a href="//darelfonyn.kpfu.ru">Газета "Darelfonyn"</a></li></ul>
+                </li>
+            </ul>
+
+            <div class="actions">
+
+
+
+                <div class="language" data-lang="russian">
+                    <div class="cs-select cs-skin-elastic cs-someone-active" tabindex="0">{#<span class="cs-placeholder">Русский</span>#}<div class="cs-options"><ul><li class="cs-optgroup"><span>Выберите язык:</span><ul><li class="russian-ico cs-selected" data-option="" data-value="russian"><span>Русский</span></li><li class="english-ico" data-option="" data-value="english"><span>English</span></li><li class="spanish-ico" data-option="" data-value="spanish"><span>Español</span></li><li class="french-ico" data-option="" data-value="french"><span>Français</span></li><li class="german-ico" data-option="" data-value="german"><span>Deutsche</span></li><li class="turkish-ico" data-option="" data-value="turkish"><span>Türkçe</span></li><li class="arabic-ico" data-option="" data-value="arabic"><span>العربية</span></li><li class="chinese-ico" data-option="" data-value="chinese"><span>中文</span></li></ul></li><div class="cs-select-close fa fa-times"></div></ul></div><select class="cs-select cs-skin-elastic cs-someone-active">
+                            <optgroup label="Выберите язык:">
+                                <option value="russian" data-class="russian-ico" selected="">Русский</option>
+                                <option value="tatar" data-class="tatar-ico" >Татар</option>
+                                <option value="english" data-class="english-ico">English</option>
+                                <option value="spanish" data-class="spanish-ico">Español</option>
+                                <option value="french" data-class="french-ico">Français</option>
+                                <option value="german" data-class="german-ico">Deutsche</option>
+                                <option value="turkish" data-class="turkish-ico">Türkçe</option>
+                                <option value="arabic" data-class="arabic-ico">العربية</option>
+                                <option value="chinese" data-class="chinese-ico">中文</option>
+                            </optgroup>
+                        </select></div></div>
+                <div class="links">
+                    <a href="https://kpfu.ru/sveden/internet-priemnaya"><i class="email-ico" data-icon=""></i></a>
+                    <a href="https://kpfu.ru/sveden/karta-vseh-obektov"><i class="sitemap-ico" data-icon=""></i></a>
+                    <a class="search-btn" href="javascript:void(0);"><i class="search-ico" data-icon=""></i></a>
+                    <img style="height:40px;" src="https://shelly.kpfu.ru/pdf/picture/mainpage_new/6++/6+.png">
+                </div>
+            </div>
+        </div>
+        <div data-uk-sticky>
+            <div class = "header-middle uk-clearfix">
+                <a class = "logo" href = "/"></a>
+                <a href = "#mobile-menu" class="mobile-menu-toggler fa fa-bars"></a>
+                <div class="social">
+                    <a class="uk-icon-rss" href="https://media.kpfu.ru/news-rss"></a>
+                    <a class="uk-icon-vk" href="https://vk.com/kazan_federal_university"></a>
+                    <a class="uk-icon-facebook" href="https://www.facebook.com/KazanUniversity/"></a>
+                    <a class="uk-icon-youtube" href="https://www.youtube.com/univertv"></a>
+                </div>
+            </div>
+            <div class = "header-bottom">
+{{ page.header }}
+            </div>
+        </div>
+    </header>
+    <div id="content" style="min-height: 776px;">
+        {{ page.slider }}
+        <div class="uk-container uk-container-center">
+            <div id="news">
+                <div class="blocksWrapper">
+                    <div class="leftBlock uk-flex uk-flex-column">
+                        <div class="block-title"><a href="https://media.kpfu.ru/news?kn[0]=%D0%93%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5%20%D0%BD%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8&created=">Главные новости</a></div>
+                        {{ page.main_news }}
+                    </div>
+                    <div class="rightBlock uk-flex uk-flex-column">
+                        <ul class="uk-tab uk-tab-grid uk-tab-bottom" data-uk-switcher="{connect:'.rightBlock-tabs', animation: 'slide-horizontal'}">
+                            <li class="uk-width-1-2 uk-active" aria-expanded="true"><a href="#">Видео</a></li>
+                            <li class="uk-width-1-2" aria-expanded="false" hidden><a href="#">TV</a></li>
+                        </ul>
+                        <div class="rightBlock-wrapper rightBlock-tabs uk-switcher">
+                            <div class="videoItem uk-active" aria-hidden="false" style="animation-duration: 200ms;">
+                                {#<div class="videoItem-wrapper">
+                                    <a class="videoItem-image uk-overlay uk-overlay-hover" href="news-single.php">
+                                        <!-- картинки нужно заливать одинаковые. ширина - 768, высота - 512 -->
+                                        <img src="/themes/inno/images/video-img1.jpg">
+                                        <div class="uk-overlay-panel uk-overlay-icon"></div>
+                                    </a>
+                                    <a class="videoItem-title" href="news-single.php">2017 год объявлен в КФУ годом Лобачевского</a>
+                                </div>#}
+                                {{ page.video }}
+                            </div>
+                            <div aria-hidden="true" style="animation-duration: 200ms;" class="">
+                              {# Фрейм телевизионщиков ебаных #}
+                                {#<iframe z-index="9999" width="100%" height="300" src="https://tv.kpfu.ru/broadcast/index.php?stream=kpfuru_hq" frameborder="0" scrolling="no" allowfullscreen></iframe>#}
+                                {#<iframe src="http://tv.kpfu.ru/broadcast_kpfu/stop.html" z-index="9999" width="100%" align="middle" height="300px"></iframe>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="blocksWrapper">
+                    <div class="leftBlock">
+                        <div class="block-title"><a href="https://media.kpfu.ru/news?kn%5B%5D=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8+%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0&created=">Новости ректората</a></div>
+                        <div class="news-list uk-grid uk-grid-width-medium-1-3">
+                            {{ page.news_rector }}
+                        </div>
+                        <div class="block-title"><a href="https://media.kpfu.ru/news?kn[0]=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F&created=">Новости образования</a></div>
+                        <div class="news-list uk-grid uk-grid-width-medium-1-3">
+                            {{ page.news_learn }}
+                        </div>
+
+                        <div class="block-title"><a href="https://media.kpfu.ru/news?kn[0]=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D1%82%D0%B8%20%D0%BD%D0%B0%D1%83%D0%BA%D0%B8&created=">Новости науки</a></div>
+                        <div class="news-list uk-grid uk-grid-width-medium-1-3">
+                            {{ page.news_sience }}
+                        </div>
+                    </div>
+                    <div class="rightBlock">
+                        <div class="block-title"><a href="https://media.kpfu.ru/news">Лента новостей</a></div>
+                        {{ page.news_lent }}
+                        <a class="blue-btn" href="https://media.kpfu.ru/news" style="margin:10px auto; width: 100% ">Показать еще</a>
+                    </div>
+                </div>
+            </div>
+            <div id="institute">
+
+                    {{ page.news_inst }}
+
+            </div>
+            <div id="news">
+                <div class="blocksWrapper">
+                    <div class="leftBlock">
+                        <div class="block-title"><a href="https://media.kpfu.ru/anons">Анонсы</a></div>
+                        <div class = "news-list uk-grid uk-grid-width-medium-1-3" data-uk-grid-match="{target:'.newsItem-title'}">
+                            {{ page.anons }}
+                        </div>
+                    </div>
+                    <div class="rightBlock">
+                        <div class="block-title">Мы в соцсетях</div>
+                        <div class="rightBlock-wrapper social-wrapper">
+                            <div class="social-tab"  data-uk-switcher="{connect:'.social-tabs-content', animation: 'slide-horizontal'}">
+                                <a class="uk-icon-vk uk-active" href="#" aria-expanded="true"></a>
+                                <a class="uk-icon-facebook" href="#" aria-expanded="false"></a>
+                                {# <a class="uk-icon-twitter" href="#" aria-expanded="false"></a> #}
+                            </div>
+                            <ul class="uk-switcher uk-margin-top social-tabs-content">
+    <li><script type="text/javascript" src="https://vk.com/js/api/openapi.js?159"></script>
+
+<!-- VK Widget -->
+<div id="vk_groups"></div>
+<script type="text/javascript">
+VK.Widgets.Group("vk_groups", {mode: 4, width: "300", height: "400"}, 9722);
+</script></li>
+    <li>
+    <!--- Facebook widget -->
+    <script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v3.1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<div class="fb-page" data-href="https://www.facebook.com/KazanUniversity/" data-tabs="timeline" data-small-header="true" data-adapt-container-width="false" data-hide-cover="false" data-show-facepile="false" data-width="300" data-height="350"><blockquote cite="https://www.facebook.com/KazanUniversity/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/KazanUniversity/">Казанский федеральный университет</a></blockquote></div></li>
+    {# <li></li> #}
+</ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {# {{ page.blogs }} #}
+            <div id="blogs"></div>
+            <div id="question">
+                <div class="block-title">Задай вопрос эксперту</div>
+                <form class="uk-form" action="https://media.kpfu.ru/sendmail/expert" method="post">
+                    <div class="form-wrapper">
+                        <div class="form-left">
+                            <div class="form-row">
+                                <input placeholder="Ф.И.О." required="" type="text" name="fio">
+                            </div>
+                            <div class="form-row">
+                                <input placeholder="Название СМИ" required="" type="text" name="smi">
+                            </div>
+                            <div class="form-row">
+                                <input class="phone" placeholder="Телефон" required="" type="text" name="phone">
+                            </div>{#
+                            <div class="form-row">
+
+                                    <select class="pretty-select" >
+                                        <option>Тематика вопроса</option>
+                                        <option value="1">Тематика 1</option>
+                                        <option value="2">Тематика 2</option>
+                                        <option value="3">Тематика 3</option>
+                                        <option value="4">Тематика 4</option>
+                                        <option value="5">Тематика 5</option>
+                                        <option value="6">Тематика 6</option>
+                                        <option value="7">Тематика 7</option>
+                                        <option value="8">Тематика 8</option>
+                                    </select>
+
+                            </div>#}
+                        </div>
+                        <div class="form-right form-row">
+                            <textarea required="" name="text"></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="blue-btn uk-width-medium-1-2 uk-width-large-1-3">Отправить</button>
+                </form>
+            </div>
+            <!--<div id="photobank">
+                <div class="block-title">Фотобанк</div>
+                <div class="uk-grid uk-grid-collaps uk-grid-width-small-1-3 uk-grid-width-large-1-4 uk-grid-width-xlarge-1-5">
+                    {{ page.front_photos }}
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>

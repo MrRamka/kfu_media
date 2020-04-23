@@ -1,0 +1,156 @@
+.hider-wrapper {
+	padding: 0;
+	margin: 0;
+	list-style: none
+}
+
+.hider-wrapper li {
+	float: left;
+}
+
+.hider-wrapper li.more {
+	text-align: center;
+	display: none;
+}
+
+.hider-wrapper li.more {
+	position: relative;
+}
+
+.hider-wrapper li.more > a {
+	position: relative;
+	padding: 0 !important;
+	width: 22px;
+	color: white !important;
+}
+
+.hider-wrapper li.more > a:hover {
+	text-decoration: none !important;
+}
+
+.hider-wrapper li.more > a:after {
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	margin-top: -11px;
+	left: 50%;
+	margin-left: -11px;
+	display: block;
+	content: '';
+	width: 22px;
+	height: 22px;
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+}
+
+.hider-wrapper li.more > a:before {
+	position: absolute;
+	z-index: 2;
+	left: 50%;
+	margin-left: -3px;
+	font-family: FontAwesome;
+	color: #012a77;
+}
+
+.hider-wrapper li.more.closed > a:before {
+	content: '\f0d7';
+}
+
+.hider-wrapper li.more.opened > a:before {
+	content: '\f0d8';
+}
+
+.hider-wrapper #overflow {
+	position: absolute;
+	z-index: 999;
+	top: 65px;
+	right: -15px;
+	padding: 0;
+	display: none;
+    -moz-box-shadow: 0px 0px 5px 0px #584747;
+    -webkit-box-shadow: 0px 0px 5px 0px #584747;
+    box-shadow: 0px 0px 5px 0px #584747;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background-color: white;
+	list-style: none;
+	text-align: left;
+}
+
+.hider-wrapper #overflow:before {
+	position: absolute;
+	top: -9px;
+	right: 15px;
+	display: block;
+	content: '';
+	width: 20px;
+	height: 20px;
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-moz-box-shadow: -2px -2px 2px 0px rgba(88, 71, 71, 0.25);
+	-webkit-box-shadow: -2px -2px 2px 0px rgba(88, 71, 71, 0.25);
+	box-shadow: -2px -2px 2px 0px rgba(88, 71, 71, 0.25);
+	background-color: white;
+}
+
+.hider-wrapper li.more.opened #overflow {
+	display: block;
+}
+
+.hider-wrapper #overflow li {
+	float: none;
+	width: 200px;
+	border-bottom: 1px solid #dfdfdf;
+}
+
+.hider-wrapper #overflow li:last-child {
+	border: none;
+}
+
+.hider-wrapper #overflow li a {
+	padding: 7px 15px;
+	display: block;
+	line-height: 20px;
+	font-size: 16px;
+	font-weight: normal;
+}
+
+@media only screen and (min-width: 768px) {
+
+	.hider-wrapper > li {
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+
+}
+
+@media only screen and (min-width: 960px) {
+
+	.hider-wrapper > li {
+		margin-right: 10px;
+		margin-left: 10px;
+	}
+
+}
+
+@media only screen and (min-width: 1200px) {
+
+	.hider-wrapper > li {
+		margin-right: 15px;
+		margin-left: 15px;
+	}
+
+}
+
+@media only screen and (min-width: 1450px) {
+
+	.hider-wrapper > li {
+		margin-right: 20px;
+		margin-left: 20px;
+	}
+
+}

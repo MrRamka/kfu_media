@@ -1,0 +1,14 @@
+<div class="event-tabs uk-switcher">
+    <div class="event-list uk-active" aria-hidden="true">
+        <div class="eventItem head">
+            <div class="eventItem-date">Дата публикации</div>
+            <div class="eventItem-title">Название статьи</div>
+            <div class="eventItem-place">Название СМИ</div>
+            <div class="eventItem-format">Ссылка на материал</div>
+        </div>
+        {% for row in rows %}
+            {{ row.content }}
+        {% endfor %}
+    </div>
+</div>
+

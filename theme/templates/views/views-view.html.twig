@@ -1,0 +1,223 @@
+{#
+/**
+ * @file
+ * Theme override for main view template.
+ *
+ * Available variables:
+ * - attributes: Remaining HTML attributes for the element.
+ * - css_name: A css-safe version of the view name.
+ * - css_class: The user-specified classes names, if any.
+ * - header: The optional header.
+ * - footer: The optional footer.
+ * - rows: The results of the view query, if any.
+ * - empty: The content to display if there are no rows.
+ * - pager: The optional pager next/prev links to display.
+ * - exposed: Exposed widget form/info to display.
+ * - feed_icons: Optional feed icons to display.
+ * - more: An optional link to the next page of results.
+ * - title: Title of the view, only used when displaying in the admin preview.
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the view title.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the view title.
+ * - attachment_before: An optional attachment view to be displayed before the
+ *   view content.
+ * - attachment_after: An optional attachment view to be displayed after the
+ *   view content.
+ * - dom_id: Unique id for every view being printed to give unique class for
+ *   Javascript.
+ *
+ * @see template_preprocess_views_view()
+ */
+#}
+
+{% if view_name == 'novosti' and view_display == "page_1" %}
+  <div{{ attributes.addClass(classes) }}>
+    <div class="news-top">
+      <div class="block-title">Новости</div>
+      <form class="searchForm">
+        <input placeholder="Найти новость" required="" type="text" id="edit-t" name="t">
+        <button type="submit" class="uk-icon-search"></button>
+      </form>
+    </div>
+      {{ rows }}
+    {{ empty }}
+    {{ pager }}
+    {{ attachment_after }}
+    {{ more }}
+  </div>
+{% elseif  view_name == 'novosti' and view_display == "page_2" %}
+    <div class="block-title">Анонсы</div>
+    <div{{ attributes.addClass(classes) }}>
+        {{ rows }}
+        {{ empty }}
+        {{ pager }}
+        {{ attachment_after }}
+        {{ more }}
+    </div>
+{% elseif  view_name == 'press_relizy' and view_display == "page_1" %}
+    <div class="block-title">Пресс-релизы</div>
+    <div{{ attributes.addClass(classes, 'event-content') }}>
+        {{ rows }}
+        {{ empty }}
+        {{ pager }}
+        {{ attachment_after }}
+        {{ more }}
+    </div>
+{% elseif view_name == 'novosti' and view_display in ["block_3", "block_4", "block_5", "block_7"] %}
+    {{ rows }}
+    {{ empty }}
+    {{ pager }}
+    {{ attachment_after }}
+    {{ more }}
+{% elseif view_name == 'novosti' and view_display == "block_6" %}
+
+    {%
+    set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    ]
+    %}
+    <div{{ attributes.addClass(classes).addClass("institute-list uk-grid uk-grid-width-medium-1-2 uk-grid-width-large-1-3 view view-novosti view-id-novosti view-display-id-block_6") }}>
+        {{ title_prefix }}
+        {{ title }}
+        {{ title_suffix }}
+
+        {% if header %}
+            <header>
+                {{ header }}
+            </header>
+        {% endif %}
+
+        {{ exposed }}
+        {{ attachment_before }}
+
+        {{ rows }}
+        {{ empty }}
+
+        {{ attachment_after }}
+        {{ more }}
+
+        {% if footer %}
+            <footer>
+                {{ footer }}
+            </footer>
+        {% endif %}
+
+        {{ feed_icons }}
+    </div>
+    {{ pager }}
+
+
+{% elseif view_name == 'fotobank'  %}
+    {{ rows }}
+{% elseif view_name == 'smi_o_nas' %}
+  <div class="block-title">Сми о нас</div>
+  <div{{ attributes.addClass(classes, 'event-content') }}>
+      {{ rows }}
+      {{ empty }}
+      {{ pager }}
+      {{ attachment_after }}
+      {{ more }}
+  </div>
+{% elseif view_name == "poisk_eksperta" %}
+    <div class="block-title">Поиск эксперта</div>
+	<div{{ attributes.addClass(classes, 'event-content') }}>
+        {{ rows }}
+        {{ empty }}
+        {{ pager }}
+        {{ attachment_after }}
+        {{ more }}
+    </div>
+{% elseif view_name == 'sobytia' and view_display == "page_1" %}
+    <div class="block-title">Календарь событий</div>
+    <div class="event-tabs uk-switcher event-content">
+        <ul class="event-switcher uk-active">
+            <li class = "uk-active"><a href="/calendar/day">на день</a></li>
+            <li><a href="#">на неделю</a></li>
+        </ul>
+        <div class="event-list uk-active" aria-hidden="true">
+            <div class="eventItem head">
+                <div class="eventItem-date">Дата</div>
+                <div class="eventItem-title">Название мероприятия</div>
+                <div class="eventItem-place">Место проведения</div>
+                <div class="eventItem-format">Формат</div>
+                <div class="eventItem-links">Ссылки</div>
+            </div>
+            {{ rows }}
+            {{ empty }}
+            {{ pager }}
+            {{ attachment_after }}
+            {{ more }}
+        </div>
+    </div>
+
+{% elseif view_name == "fotoalbom" %}
+    <div class="block-title">Фотобанк</div>
+    <div class="filter uk-grid uk-grid-width-medium-1-3">
+        <div class="filter-item">
+        {% if sort == "created_1" %}
+            <a class="uk-active" href="/photos?sort_by=created_1">По дате</a>
+        {% else %}
+            <a  href="/photos?sort_by=created_1">По дате</a>
+        {% endif %}
+        </div>
+        <div class="filter-item">
+            {% if sort == "totalcount" %}
+                <a class="uk-active" href="/photos?sort_by=totalcount">По просмотрам</a>
+            {% else %}
+                <a  href="/photos?sort_by=totalcount">По просмотрам</a>
+            {% endif %}
+        </div>
+        <div class="filter-item">
+            <a href="#">По дате</a>
+        </div>
+    </div>
+    <div class="photobank-list uk-grid uk-grid-width-medium-1-2">
+    {{ rows }}
+    {{ empty }}
+    {{ pager }}
+    {{ attachment_after }}
+    {{ more }}
+    </div>
+{% else %}
+{%
+    set classes = [
+    dom_id ? 'js-view-dom-id-' ~ dom_id,
+    ]
+%}
+{% if view_name == 'sobytia' %}
+    <div class="block-title">Календарь событий</div>
+    <div{{ attributes.addClass(classes, 'event-content') }}>
+{% else %}
+    <div{{ attributes.addClass(classes) }}>
+{% endif %}
+
+  {{ title_prefix }}
+  {{ title }}
+  {{ title_suffix }}
+
+  {% if header %}
+    <header>
+      {{ header }}
+    </header>
+  {% endif %}
+
+  {{ exposed }}
+  {{ attachment_before }}
+
+  {{ rows }}
+  {{ empty }}
+  {{ pager }}
+
+  {{ attachment_after }}
+  {{ more }}
+
+  {% if footer %}
+    <footer>
+      {{ footer }}
+    </footer>
+  {% endif %}
+
+  {{ feed_icons }}
+</div>
+{% endif %}

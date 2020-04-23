@@ -1,0 +1,24 @@
+inno.mobile:
+  label: mobile
+  mediaQuery: '(max-width: 639px)'
+  weight: 0
+  multipliers:
+   - 1x
+inno.tablet-portrait:
+  label: tablet-portrait
+  mediaQuery: 'all and (min-width: 640px) and (max-width: 767px)'
+  weight: 1
+  multipliers:
+    - 1x
+inno.tablet-landscape:
+  label: tablet-landscape
+  mediaQuery: 'all and (min-width: 768px) and (max-width: 959px)'
+  weight: 1
+  multipliers:
+    - 1x
+inno.laptop:
+  label: laptop
+  mediaQuery: 'all and (min-width: 960px)'
+  weight: 1
+  multipliers:
+    - 1x

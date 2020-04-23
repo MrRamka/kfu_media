@@ -1,0 +1,261 @@
+<?php
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+//use Drupal\image\Entity\ImageStyle;
+
+//Перепоределим page.html.twig для разных типов материалов
+function inno_suggestions_page_alter( array &$suggestions, array $variables ) {
+	if ( $node = \Drupal::routeMatch()->getParameter( 'node' ) ) {
+		$suggestions[] = 'page__' . $node->getType();
+	}
+
+	return $suggestions;
+}
+
+//Перепоределим html.html.twig для разных типов материалов
+function inno_suggestions_html_alter( array &$suggestions, array $variables ) {
+	if ( $node = \Drupal::routeMatch()->getParameter( 'node' ) ) {
+		$suggestions[] = 'html__' . $node->getType();
+	}
+
+	return $suggestions;
+}
+
+//Добавим переменые в html.html.twig
+function inno_preprocess_html( &$variables ) {
+	$variables['uri'] = $_SERVER['REQUEST_URI'];
+	$user             = \Drupal::currentUser();
+	if ( $user ) {
+		$username              = \Drupal\user\Entity\User::load( $user->id() );
+		$variables['username'] = $username->getUsername();
+	}
+	$variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+	$node                    = \Drupal::request()->attributes->get( 'node' );
+	if ( $node ) {
+		$variables['type'] = $node->getType();
+	}
+	if ( $node && $node->getType() == "news" ) {
+		//$variables['base_url'] = $node->field_from->value;
+	}
+
+	return $variables;
+}
+
+
+function inno_preprocess_page( &$variables ) {
+	//Проверяем, залогинен ли юзер
+	$user = \Drupal::currentUser();
+	if ( $user ) {
+		$username = \Drupal\user\Entity\User::load( $user->id() );
+		$names    = explode( " ", $username->getUsername() );
+		if ( isset( $names[1] ) ) {
+			$variables['username'] = $variables['username'] = mb_substr( $names[0], 0, 1 ) . ". " . $names[1];
+		} else {
+			$variables['username'] = $username->getUsername();
+		}
+		if ( $user->id() == 47 || $user->id() == 70 ) {
+			$variables['archive'] = TRUE;
+		} else {
+			$variables['archive'] = FALSE;
+		}
+
+	} else {
+		$variables['username'] = "0";
+	}
+	//Для AJAX'а
+	if ( isset( $_GET['ajax'] ) && $_GET['ajax'] == 'true' ) {
+		$variables['ajax'] = TRUE;
+	}
+
+	//Добавим тип ноды
+	if ( $node = \Drupal::routeMatch()->getParameter( 'node' ) ) {
+		$variables['node_type'] = $node->getType();
+	}
+	$variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+
+	$roles = \Drupal::currentUser()->getRoles();
+	if ( in_array( "administrator", $roles ) || in_array( "redaktor", $roles ) ) {
+		$variables['editor'] = TRUE;
+	} else {
+		$variables['editor'] = FALSE;
+	}
+
+	return $variables;
+}
+
+function inno_preprocess_views_view( &$variables ) {
+	$view                      = $variables['view'];
+	$variables['view_name']    = $view->storage->id();
+	$variables['view_display'] = $view->current_display;
+	if ( isset( $_GET['sort_by'] ) ) {
+		$variables['sort'] = $_GET['sort_by'];
+	}
+
+	return $variables;
+}
+
+function inno_preprocess_field( &$variables ) {
+	$node = \Drupal::routeMatch()->getParameter( 'node' );
+	if ( ! $node ) {
+		return;
+	}
+	switch ( $variables['element']["#field_name"] ) {
+		case 'title':
+			$variables['clear_title'] = htmlentities( $variables['element']['#object']->getTitle() );
+			break;
+	}
+
+	return $variables;
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function inno_suggestions_image_formatter_alter( array &$suggestions, array $variables ) {
+	$entity        = $variables['item']->getEntity();
+	$field_name    = $variables['item']->getParent()->getName();
+	$suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
+}
+
+function inno_preprocess_block( array &$variables ) {
+	if ( isset( $_GET['ajax'] ) && $_GET['ajax'] == 'true' ) {
+		$variables['ajax'] = TRUE;
+	} else {
+		$variables['ajax'] = FALSE;
+	}
+
+	return $variables;
+}
+
+function inno_preprocess_form( &$variables ) {
+	/*$variables['route_name'] = \Drupal::routeMatch()->getRouteName();
+	if($variables['attributes']['id']=="views-exposed-form-poisk-eksperta-page-1")
+	{
+	  $variables['attributes']['class'] = "searchForm";
+	}
+	return $variables;*/
+}
+
+//Селекты
+function inno_preprocess_select( &$variables ) {
+	$variables['name'] = $variables['element']['#name'];
+
+	return $variables;
+	//kint($element);
+}
+
+//Инпуты
+function inno_preprocess_input( &$variables ) {
+	$variables['name'] = $variables['element']['#name'];
+	$current_url       = Url::fromRoute( '<current>' );
+	$variables['path'] = $current_url->toString();
+
+	return $variables;
+	//kint($element);
+}
+
+function inno_preprocess_views_view_fields( &$variables ) {
+	$view                   = $variables['view'];
+	$variables['view_name'] = $view->storage->id();
+}
+
+function inno_preprocess_node( &$variables ) {
+	$node = $variables['node'];
+	if ( $node->getType() == "news" ) {
+	  if ( $node->id() != "" ) {
+            $database = \Drupal::database();
+            $result = $database
+                ->select('node_counter', 'n')
+                ->fields('n', ['totalcount'])
+                ->condition('nid', $node->id(), '=')
+                ->execute()
+                ->fetchField();
+			$variables['stat'] = $result;
+		}
+
+		$images = [];
+
+		foreach ( $node->field_kartinka->getValue() as $image ) {
+			$file = \Drupal\file\Entity\File::load( $image['target_id'] );
+			//$stream_wrapper_manager = \Drupal::service('stream_wrapper_manager')->getViaUri($file->getFileUri());
+			$images[] = file_create_url( $file->getFileUri() );
+			//$images[] = \Drupal\image\Entity\ImageStyle::load('novost')->buildUrl($file->getFileUri());
+			//$images[] = $stream_wrapper_manager->getExternalUrl();
+		}
+		$variables['summary'] = $node->body->summary;
+		$variables['text']    = str_replace( $node->body->summary, "", $node->body->value );
+		$roles                = \Drupal::currentUser()->getRoles();
+		if ( in_array( "administrator", $roles ) || in_array( "redaktor", $roles ) ) {
+			$variables['edit_link'] = "http://media.kpfu.ru/node/" . $node->id() . "/edit";
+		} else {
+			$variables['edit_link'] = "";
+		}
+
+
+		$display_settings  = [
+			'label' => 'inline',
+		];
+		$source            = \Drupal::entityTypeManager()
+		                            ->getStorage( "node" )
+		                            ->load( $node->id() );
+		$viewBuilder       = \Drupal::entityTypeManager()
+		                            ->getViewBuilder( "node" );
+		$value             = $source->get( "body" );
+		$variables['text'] = $viewBuilder->viewField( $value, 'full' );
+		$value             = $source->get( "field_faily" );
+		$variables['files'] = $viewBuilder->viewField( $value, 'full' );
+    $value             = $source->get( "field_kommentarii" );
+    $variables['comments'] = $viewBuilder->viewField( $value, 'full' );
+
+		if ( $node->field_by->value == "" ) {
+			$uid  = $node->getOwnerId();
+			$user = \Drupal\user\Entity\User::load( $uid );
+			if ( ! is_null( $user ) ) {
+				$username           = $user->getDisplayName();
+				$variables['autor'] = $username;
+				// {{ username }} will be available within block.html.twig.
+			}
+		} else {
+			$variables['autor'] = $node->field_by->value;
+		}
+
+		if ( ! empty( $images ) ) {
+			$variables['image'] = $images;
+		}
+		$variables['cat'] = $node->field_kategoria_novosti_dla_sait->getValue();
+	}
+
+	return $variables;
+}
+
+function inno_preprocess_comment( &$variables ) {
+	//$variables['author'] = t('@username commented !datetime', array('@username' => $variables['author'], '!datetime' => '<span class="comments-ago">' . $variables['created'] . ' ago </span>'));
+	$variables['date'] = date( "d.m.Y", $variables['comment']->getCreatedTime() );
+
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+/*
+function inno_theme_suggestions_image_formatter_alter(array &$suggestions, array $variables) {
+  $entity = $variables['item']->getEntity();
+  $field_name = $variables['item']->getParent()->getName();
+  $suggestions[] = 'image_formatter__' . $entity->getEntityTypeId() . '__' . $entity->bundle() . '__' . $field_name;
+}
+/*
+function inno_preprocess_image(&$variables){
+  //var_dump($variables['uri']);
+  $img = str_replace("http://media.kpfu.ru/sites/default/files/styles/foto/public/", "public://", $variables['uri']);
+  $img = substr($img,0,strpos($img,"?"));
+  //$variables['styled'] = ImageStyle::load('full')->buildUrl($img);
+  //$variables['styled'] = file_create_url($img);
+  return $variables;
+}*/
+/*
+function inno_preprocess_views_view_field(&$variables) {
+  echo "<pre>";
+  var_dump($variables['field']);
+  echo "</pre>";
+}*/

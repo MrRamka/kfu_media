@@ -1,0 +1,662 @@
+body {
+  /*overflow-y: hidden;  НАХУЯ ТАК ДЕЛАТЬ??? */
+}
+
+/* Sergey fixes */
+.content_wrapper img[src="https://media.kpfu.ru/sites/default/files/2019-12/rector.png"] {
+  display: none;
+}
+
+#block-mobilemenu {
+  display: none;
+}
+
+body.overflow-hidden {
+  overflow-y: hidden !important;
+}
+
+#main-menu:not(.hider-wrapper) {
+  display: none !important;
+}
+
+.loader-wrapper {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(https://students.kpfu.ru/sharing/images/logo.png) center center no-repeat #012a77;
+}
+
+.cssload-loader {
+  position: absolute;
+  top: calc(50% - 165px);
+  left: calc(50% - 165px);
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  perspective: 4700px;
+}
+
+.cssload-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  border-radius: 50%;
+  -o-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+}
+
+.cssload-inner.cssload-one {
+  left: 0%;
+  top: 0%;
+  animation: cssload-rotate-one 1.15s linear infinite;
+  -o-animation: cssload-rotate-one 1.15s linear infinite;
+  -ms-animation: cssload-rotate-one 1.15s linear infinite;
+  -webkit-animation: cssload-rotate-one 1.15s linear infinite;
+  -moz-animation: cssload-rotate-one 1.15s linear infinite;
+  border-bottom: 12px solid white;
+}
+
+.cssload-inner.cssload-two {
+  right: 0%;
+  top: 0%;
+  animation: cssload-rotate-two 1.15s linear infinite;
+  -o-animation: cssload-rotate-two 1.15s linear infinite;
+  -ms-animation: cssload-rotate-two 1.15s linear infinite;
+  -webkit-animation: cssload-rotate-two 1.15s linear infinite;
+  -moz-animation: cssload-rotate-two 1.15s linear infinite;
+  border-right: 12px solid white;
+}
+
+.cssload-inner.cssload-three {
+  right: 0%;
+  bottom: 0%;
+  animation: cssload-rotate-three 1.15s linear infinite;
+  -o-animation: cssload-rotate-three 1.15s linear infinite;
+  -ms-animation: cssload-rotate-three 1.15s linear infinite;
+  -webkit-animation: cssload-rotate-three 1.15s linear infinite;
+  -moz-animation: cssload-rotate-three 1.15s linear infinite;
+  border-top: 12px solid white;
+}
+
+@keyframes cssload-rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@-o-keyframes cssload-rotate-one {
+  0% {
+    -o-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    -o-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@-ms-keyframes cssload-rotate-one {
+  0% {
+    -ms-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    -ms-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes cssload-rotate-one {
+  0% {
+    -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@-moz-keyframes cssload-rotate-one {
+  0% {
+    -moz-transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    -moz-transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes cssload-rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@-o-keyframes cssload-rotate-two {
+  0% {
+    -o-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    -o-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@-ms-keyframes cssload-rotate-two {
+  0% {
+    -ms-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    -ms-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes cssload-rotate-two {
+  0% {
+    -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@-moz-keyframes cssload-rotate-two {
+  0% {
+    -moz-transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    -moz-transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes cssload-rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+@-o-keyframes cssload-rotate-three {
+  0% {
+    -o-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    -o-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+@-ms-keyframes cssload-rotate-three {
+  0% {
+    -ms-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    -ms-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+@-webkit-keyframes cssload-rotate-three {
+  0% {
+    -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    -webkit-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+@-moz-keyframes cssload-rotate-three {
+  0% {
+    -moz-transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    -moz-transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+input[type="text"]::-webkit-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]::-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:-moz-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:-ms-input-placeholder {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:focus::-webkit-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:focus::-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:focus:-moz-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+input[type="text"]:focus:-ms-input-placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#search-area {
+  padding: 0 15px;
+  background-color: #012a77;
+}
+
+#search-area input[type="text"] {
+  padding: 0 30px 0 10px;
+  width: calc(100% - 40px);
+  height: 70px;
+  line-height: 70px;
+  border: none;
+  background: none;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 20px;
+  color: white;
+  outline: none;
+}
+
+#search-area input[type="text"]::-webkit-input-placeholder {
+  color: white
+}
+
+#search-area input[type="text"]::-moz-placeholder {
+  color: white
+}
+
+#search-area input[type="text"]:-moz-placeholder {
+  color: white
+}
+
+#search-area input[type="text"]:-ms-input-placeholder {
+  color: white
+}
+
+header i {
+  font-size: 21px;
+  font-style: normal;
+}
+
+header .login {
+  position: relative;
+  float: left;
+  margin-top: 17px;
+  width: 53px;
+  height: 26px;
+  line-height: 24px;
+  border: 1px solid white;
+  font-size: 14px;
+  text-align: center;
+}
+
+header .login:not(.authorized):hover:after {
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  left: 0;
+  display: block;
+  content: '';
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+header .login:not(.authorized):active:after {
+  background-color: #012a77;
+}
+
+header .login.authorized {
+  margin-right: 16px;
+  border-radius: 13px;
+  border-color: #012a77;
+}
+
+header .login:hover {
+  text-decoration: none;
+}
+
+header .login i {
+  margin-right: 5px;
+  margin-left: 1px;
+  font-size: 16px;
+}
+
+header .home,
+header #main-menu>li>a {
+  display: block;
+  height: 60px;
+  line-height: 60px;
+  font-size: 14px;
+}
+
+header .home {
+  padding: 0 15px;
+  float: left;
+}
+
+header .home i {
+  position: relative;
+  top: 2px;
+}
+
+header #main-menu>li>a {
+  position: relative;
+  padding: 0 9px;
+}
+
+header #main-menu>li>a:hover {
+  text-decoration: none;
+}
+
+header #main-menu>li:not(.more)>a:hover:after {
+  position: absolute;
+  right: 0;
+  bottom: 13px;
+  left: 0;
+  display: block;
+  content: '';
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+header #main-menu>li.active>a:hover:after,
+header #main-menu>li:not(.more)>a:active:after {
+  background-color: #012a77;
+}
+
+header .actions {
+  float: right;
+  text-align: right;
+}
+
+header .actions .links {
+
+  height: 60px;
+  text-align: justify
+}
+
+header .actions .links:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+
+header .actions .links .search-btn.opened {
+  background-color: #012a77;
+  color: white;
+}
+
+header .actions a {
+  display: inline-block;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+header .home:hover,
+header .actions a:hover {
+  color: #018eff;
+  text-decoration: none;
+}
+
+header .actions a .email-ico {
+  position: relative;
+  top: 3px;
+}
+
+header .actions a .sitemap-ico {
+  position: relative;
+  top: 3px;
+}
+
+header .actions a .search-ico {
+  position: relative;
+  top: 3px;
+}
+
+header .actions .language {
+  position: relative;
+  float: left;
+}
+
+header .actions .language .cs-optgroup>span {
+  display: none;
+}
+
+header .actions .language .cs-optgroup ul {
+  padding: 0;
+  margin: 0;
+}
+
+header .actions .language .cs-skin-elastic .cs-optgroup ul {
+  width: 165px;
+  margin: 0 auto;
+}
+
+header .actions .language .cs-skin-overlay .cs-optgroup ul li span {
+  margin: 10px 30px;
+  padding: 0 33px 0 0;
+  color: #012a77;
+}
+
+header .actions .language .cs-skin-overlay .cs-optgroup>span {
+  display: block;
+}
+
+header .actions .language .cs-skin-elastic .cs-optgroup ul li span {
+  margin: 10px 15px;
+  padding: 0 33px 0 0;
+  height: 24px;
+  color: #012a77;
+}
+
+header .actions .language .cs-skin-elastic .cs-select-close {
+  display: none !important;
+}
+
+header .actions .language .cs-select:after {
+  position: absolute;
+  top: 12px;
+  right: 5px;
+  display: block;
+  content: '\f0dd';
+  font-family: FontAwesome;
+  font-size: 14px;
+  color: #012a77;
+}
+
+header .actions .language .cs-select.cs-active:after {
+  top: 26px;
+  content: '\f0de';
+}
+
+header .language .cs-placeholder {
+  width: 50px;
+  height: 60px;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
+header .language .cs-placeholder:after {
+  content: '';
+}
+
+header .language[data-lang="russian"] .cs-placeholder,
+header .language .cs-options li.russian-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/russian-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="english"] .cs-placeholder,
+header .language .cs-options li.english-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/english-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="spanish"] .cs-placeholder,
+header .language .cs-options li.spanish-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/spanish-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="french"] .cs-placeholder,
+header .language .cs-options li.french-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/french-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="german"] .cs-placeholder,
+header .language .cs-options li.german-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/german-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="turkish"] .cs-placeholder,
+header .language .cs-options li.turkish-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/turkish-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="arabic"] .cs-placeholder,
+header .language .cs-options li.arabic-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/arabic-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="chinese"] .cs-placeholder,
+header .language .cs-options li.chinese-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/chinese-ico.png) right center no-repeat transparent;
+}
+
+header .language[data-lang="tatar"] .cs-placeholder,
+li.tatar-ico span {
+  background: url(https://students.kpfu.ru/sharing/images/flags/tatar-ico.png) right center no-repeat transparent;
+}
+
+header .language .cs-placeholder {
+  background-position: 8px center !important;
+}
+
+header .language .cs-options {
+  right: 0;
+  padding: 0;
+  width: auto;
+}
+
+header .language .cs-options li span:hover,
+header .language .cs-options .cs-selected span {
+  color: #018eff !important;
+}
+
+header .language .cs-options .cs-selected span::after {
+  content: '';
+}
+
+@media only screen and (min-width: 300px) {
+  header .login.authorized {
+    margin-right: 0;
+  }
+  header .actions {
+    width: 180px;
+  }
+  header #main-menu {
+    float: left;
+    width: calc(100% - 300px);
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  #search-area {
+    margin-top: -72px;
+  }
+  header .actions {
+    width: 225px;
+  }
+  header .actions a {
+    padding: 10px 15px 0;
+  }
+  header #main-menu {
+    float: left;
+    width: calc(100% - 355px);
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  header .actions {
+    width: 225px;
+  }
+  header .actions .links {
+
+  }
+  header #main-menu {
+    float: left;
+    width: calc(100% - 355px);
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  header .actions {
+    width: 250px;
+  }
+  header .actions .links {
+    margin-left: 80px;
+  }
+  header #main-menu {
+    float: left;
+    width: calc(100% - 375px);
+  }
+  header #slider .slick-slide .slide-text {
+    bottom: 185px;
+  }
+}
+
+@media only screen and (min-width: 1450px) {
+  header .actions {
+    width: 300px;
+  }
+  header .actions .links {
+
+  }
+  header #main-menu {
+    float: left;
+    width: calc(100% - 425px);
+  }
+}
+
+@media only screen and (max-width: 520px) {
+  #search-area {
+    margin-top: -52px;
+  }
+  #search-area input[type="text"] {
+    height: 50px;
+    line-height: 50px;
+    margin-left: 5px;
+    width: calc(100% - 52px);
+  }
+  header .actions a {
+    padding: 10px 7px 0;
+  }
+  header #main-menu>li:not(.more) {
+    display: none;
+  }
+}

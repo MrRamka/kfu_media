@@ -1,0 +1,21 @@
+{#
+/**
+ * @file
+ * Theme override of an image.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the img tag.
+ * - style_name: (optional) The name of the image style applied.
+ *
+ * @see template_preprocess_image()
+ */
+#}
+{#
+{% if style_name == 'fotobank' %}
+    <a class="fancybox" rel="gallery" href="{{ styled }}" style="background:url({{ uri }}) center center; background-size: cover">&nbsp;</a>
+{% else %}
+    <img{{ attributes }} />
+{% endif %}
+#}
+<img{{ attributes }} />
+

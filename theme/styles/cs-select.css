@@ -1,0 +1,352 @@
+/* Default custom select styles */
+div.cs-select {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	text-align: left;
+	background: #fff;
+	z-index: 100;
+	width: 100%;
+	max-width: 500px;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+div.cs-select:focus {
+	outline: none; /* For better accessibility add a style for this in your skin */
+}
+
+.cs-select select {
+	display: none;
+}
+
+.cs-select span {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	/*white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;*/
+}
+
+/* Placeholder and selected option */
+.cs-select > span::after,
+.cs-select .cs-selected span::after {
+	speak: none;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.cs-select > span::after {
+	content: '\25BE';
+	right: 1em;
+}
+
+.cs-select .cs-selected span::after {
+	content: '\2713';
+	margin-left: 1em;
+}
+
+.cs-select.cs-active > span::after {
+	-webkit-transform: translateY(-50%) rotate(180deg);
+	transform: translateY(-50%) rotate(180deg);
+}
+
+div.cs-active {
+	z-index: 200;
+}
+
+/* Options */
+.cs-select .cs-options {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	background: #fff;
+	visibility: hidden;
+}
+
+.cs-select.cs-active .cs-options {
+	visibility: visible;
+}
+
+.cs-select ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/* width: 100%; */
+}
+
+.cs-select ul li[data-value=""] {
+	display: none;
+}
+
+.cs-select ul li.cs-focus span {
+	background-color: #ddd;
+}
+
+/* Optgroup and optgroup label */
+.cs-select li.cs-optgroup ul {
+	padding: 0 50px;
+	display: inline-block;
+	width: calc(100% - 100px);
+}
+
+.cs-select li.cs-optgroup ul li {
+	margin: 10px 0;
+}
+
+.cs-select li.cs-optgroup ul li:first-child {
+	margin-top: 0;
+}
+
+.cs-select li.cs-optgroup > span {
+	cursor: default;
+}
+
+
+/* OVERLAY */
+.cs-skin-overlay .cs-selected span::after {
+	content: '';
+}
+
+.cs-skin-overlay.cs-active > span {
+	background: #fff;
+	border-color: #fff;
+}
+
+.cs-skin-overlay .cs-options {
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+	overflow-y: auto;
+	background: rgba(255, 255, 255, 0.96);
+	opacity: 0;
+	-webkit-transform: perspective(1000px) translate3d(0, 0, -200px);
+	transform: perspective(1000px) translate3d(0, 0, -200px);
+	-webkit-transition: -webkit-transform 0.4s, opacity 0.4s, visibility 0s 0.4s;
+	transition: transform 0.4s, opacity 0.4s, visibility 0s 0.4s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+}
+
+.cs-skin-overlay.cs-active .cs-options {
+	opacity: 1;
+	-webkit-transform: perspective(1000px) translate3d(0, 0, 0px);
+	transform: perspective(1000px) translate3d(0, 0, 0px);
+	-webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+	transition: opacity 0.4s, transform 0.4s;
+}
+
+.cs-skin-overlay .cs-options > ul {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	max-height: 70vh;
+	overflow: hidden;
+	-webkit-transform: translate3d(-50%, -50%,0);
+	transform: translate3d(-50%, -50%,0);
+}
+
+.cs-skin-overlay .cs-optgroup {
+	margin: 0 auto;
+}
+
+.cs-skin-overlay .cs-optgroup ul {
+	/*max-height: 70vh;
+	overflow: hidden;*/
+}
+
+.cs-skin-overlay .mCSB_scrollTools {
+	right: 25px;
+}
+
+@media screen and (max-width: 30em) {
+	.cs-skin-overlay .cs-optgroup { width: 100%; float: none; }
+}
+
+.cs-skin-overlay .cs-optgroup > span {
+	padding: 22px 1em 1em 1em;
+	font-size: 16px;
+	line-height: 16px;
+	font-weight: bold;
+	text-align: center;
+	color: #999 !important;
+}
+
+.cs-skin-overlay li.cs-optgroup {
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	transition-timing-function: cubic-bezier(0.7,0,0.3,1);
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+.cs-skin-overlay li.cs-optgroup:first-child {
+	text-align: center;
+	-webkit-transform: translate3d(1em,0,0);
+	transform: translate3d(1em,0,0);
+}
+
+.cs-skin-overlay li.cs-optgroup .mCSB_inside>.mCSB_container {
+	margin-right: 0;
+}
+
+.cs-skin-overlay .iScrollVerticalScrollbar {
+    top: 60px !important;
+    right: 29px !important;
+    bottom: 10px !important;
+}
+
+.cs-skin-overlay .iScrollVerticalScrollbar .iScrollIndicator {
+	background-color: #012a77 !important;
+}
+
+.cs-skin-overlay li.cs-optgroup:nth-child(2) {
+	-webkit-transform: translate3d(-1em,0,0);
+	transform: translate3d(-1em,0,0);
+}
+
+.cs-skin-overlay.cs-active li.cs-optgroup {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.cs-skin-overlay li.cs-optgroup ul span {
+	padding: 8px 0;
+	display: inline-block;
+	line-height: 24px;
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	color: #012a77;
+}
+
+.cs-skin-overlay li.cs-optgroup li span:hover,
+.cs-skin-overlay li.cs-optgroup li.cs-focus span,
+.cs-skin-overlay li.cs-optgroup li.cs-selected span {
+	color: #018eff;
+}
+
+.cs-skin-overlay .cs-select-close {
+	position: absolute;
+	top: 0;
+	right: 5px;
+	display: block;
+	padding: 20px;
+	content: '\f00d';
+	font-family: FontAwesome;
+	font-size: 20px;
+	color: #012a77;
+	cursor: pointer;
+}
+
+.cs-skin-elastic > span {
+	background-color: #fff;
+	z-index: 100;
+}
+
+.cs-skin-elastic .cs-options {
+	overflow: visible;
+	background: transparent;
+	opacity: 1;
+	visibility: visible;
+	padding-bottom: 1.25em;
+	pointer-events: none;
+}
+
+.cs-skin-elastic.cs-active .cs-options {
+	pointer-events: auto;
+}
+
+.cs-skin-elastic .cs-options > ul::before {
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;
+	-webkit-transform: scale3d(1,0,1);
+	transform: scale3d(1,0,1);
+	background: #fff;
+	-webkit-transform-origin: 50% 0%;
+	transform-origin: 50% 0%;
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.cs-skin-elastic.cs-active .cs-options > ul::before {
+	-webkit-transform: scale3d(1,1,1);
+	transform: scale3d(1,1,1);
+	-webkit-transition: none;
+	transition: none;
+	-webkit-animation: expand 0.6s ease-out;
+  	animation: expand 0.6s ease-out;
+}
+
+.cs-skin-elastic .cs-options ul li {
+	opacity: 0;
+	-webkit-transform: translate3d(0,-25px,0);
+	transform: translate3d(0,-25px,0);
+	-webkit-transition: opacity 0.15s, -webkit-transform 0.15s;
+	transition: opacity 0.15s, transform 0.15s;
+}
+
+.cs-skin-elastic.cs-active .cs-options ul li {
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+	opacity: 1;
+	-webkit-transition: none;
+	transition: none;
+	-webkit-animation: bounce 0.6s ease-out;
+  	animation: bounce 0.6s ease-out;
+}
+
+@-webkit-keyframes expand {
+	0% { -webkit-transform: scale3d(1,0,1); }
+	25% { -webkit-transform: scale3d(1,1.2,1); }
+	50% { -webkit-transform: scale3d(1,0.85,1); }
+	75% { -webkit-transform: scale3d(1,1.05,1) }
+	100% { -webkit-transform: scale3d(1,1,1); }
+}
+
+@keyframes expand {
+	0% { -webkit-transform: scale3d(1,0,1); transform: scale3d(1,0,1); }
+	25% { -webkit-transform: scale3d(1,1.2,1); transform: scale3d(1,1.2,1); }
+	50% { -webkit-transform: scale3d(1,0.85,1); transform: scale3d(1,0.85,1); }
+	75% { -webkit-transform: scale3d(1,1.05,1); transform: scale3d(1,1.05,1); }
+	100% { -webkit-transform: scale3d(1,1,1); transform: scale3d(1,1,1); }
+}
+
+@-webkit-keyframes bounce {
+	0% { -webkit-transform: translate3d(0,-25px,0); opacity:0; }
+	25% { -webkit-transform: translate3d(0,10px,0); }
+	50% { -webkit-transform: translate3d(0,-6px,0); }
+	75% { -webkit-transform: translate3d(0,2px,0); }
+	100% { -webkit-transform: translate3d(0,0,0); opacity: 1; }
+}
+
+@keyframes bounce {
+	0% { -webkit-transform: translate3d(0,-25px,0); transform: translate3d(0,-25px,0); opacity:0; }
+	25% { -webkit-transform: translate3d(0,10px,0); transform: translate3d(0,10px,0); }
+	50% { -webkit-transform: translate3d(0,-6px,0); transform: translate3d(0,-6px,0); }
+	75% { -webkit-transform: translate3d(0,2px,0); transform: translate3d(0,2px,0); }
+	100% { -webkit-transform: translate3d(0,0,0); transform: translate3d(0,0,0); opacity: 1; }
+}

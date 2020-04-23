@@ -1,0 +1,26 @@
+name: Inno
+type: theme
+description: inno.kpfu.ru theme
+package: KPFU
+core: 8.x
+libraries:
+ - inno/global-styling
+regions:
+ header: Header
+ sidebar_left: Left sidebar
+ content: Content
+ mmenu: Mobile Menu
+ front_news: Frontpage News
+ request: Frontpage form
+ main_news: Frontpage Main News
+ news_lent: Frontpage News Lent
+ news_sience: Frontpage News Sience
+ news_learn: Frontpage Education News
+ news_rector: Frontpage Rector News
+ news_inst: Frontpage Institutes News
+ anons: Frontpage Anonses
+ front_photos: Frontpage Photoalbum
+ slider: Frontpage Slider
+ blogs: Frontpage Blogs
+ video: Frontpage video
+ login: Login block

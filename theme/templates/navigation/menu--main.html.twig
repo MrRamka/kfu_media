@@ -1,0 +1,48 @@
+<ul class="menu uk-container uk-container-center">
+{% import _self as menus %}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {% if items %}
+        {% for item in items %}
+            {% if menu_level == 0 %}
+                {% if item.title == "Новости" %}
+                    <li class="parent menu-news">
+                {% else %}
+                    <li class="parent">
+                {% endif %}
+                {{ link(item.title, item.url) }}
+                {% if item.below %}
+                    <div class="submenu-wrapper">
+                        <div class="uk-container uk-container-center uk-flex uk-flex-space-between">
+                            <ul class="submenu">
+                                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                            </ul>
+                            {% if item.title == "Календарь" %}
+                                <a class="offerLink" href="#" data-fancybox="modal" data-src="#send-event">Предложить свое событие</a>
+                            {% elseif item.title == "Медиатека" %}
+                                <a class="offerLink" href="#" data-fancybox="modal" data-src="#send-photo">Предложить видео или фото</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% else %}
+                <li>
+                {{ link(item.title, item.url) }}
+                {% if item.below %}
+                    <div class="submenu-wrapper">
+                        <div class="uk-container uk-container-center uk-flex uk-flex-space-between">
+                            <ul class="submenu">
+                                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                            </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endif %}
+            </li>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+</ul>

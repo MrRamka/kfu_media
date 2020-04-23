@@ -1,0 +1,60 @@
+global-styling:
+  version: 1.x
+  css:
+    theme:
+      styles/uikit.min.css: {}
+      styles/header.css: {}
+      styles/datepicker.min.css: {}
+      styles/form-select.min.css: {}
+      styles/form-file.min.css: {}
+      styles/slider.min.css: {}
+      styles/slideshow.min.css: {}
+      styles/slidenav.min.css: {}
+      styles/dotnav.min.css: {}
+      styles/sticky.min.css: {}
+      styles/jquery.mmenu.all.css: {}
+      styles/simple-line-icons.css: {}
+      styles/cs-select.css: {}
+      styles/item-hider.css: {}
+      styles/font-awesome.min.css: {}
+      styles/slick.css: {}
+      styles/ion.rangeSlider.css: {}
+      styles/ion.rangeSlider.skinFlat.css: {}
+      styles/multiple-select.css: {}
+      styles/style.css: {}
+      styles/jquery.fancybox.min.css: {}
+#      styles/popup.css: {}
+      styles/modificators.css: {}
+      styles/airdatepicker.min.css: {}
+      styles/login.css: {}
+
+  js:
+#    js/uikit.min.js: {}
+    js/export/uikit.min.js: {}
+    js/form-select.min.js: {}
+    js/datepicker.min.js: {}
+#    js/slider.min.js: {}
+    js/slider.js: {}
+    js/slideshow.min.js: {}
+    js/sticky.min.js: {}
+    js/slideset.min.js: {}
+    js/jquery.mmenu.all.min.js: {}
+    js/iscroll.js: {}
+    js/modernizr-custom.js: {}
+    js/classie.js: {}
+    js/selectFx.js: {}
+    js/header.js: {}
+    js/slick.min.js: {}
+    js/jquery.fancybox.min.js: {}
+    js/ion.rangeSlider.min.js: {}
+    js/multiple-select.js: {}
+    js/multiple-select-helpers.js: {}
+    js/jquery.prettyselect.js: {}
+    js/jquery.maskedinput.min.js: {}
+    js/popup.js: {}
+    js/script.js: {}
+    js/airdatepicker.min.js: {}
+    js/helpers.js: {}
+    js/login.js: {}
+  dependencies:
+    - core/jquery
