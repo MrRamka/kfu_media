@@ -1,6 +1,6 @@
 <?php
 
-namespace Parsers\ChemistryParser;
+namespace Parsers\LibraryParser;
 
 use App\Abstracts\AbstractParser;
 use App\App;
@@ -9,6 +9,6 @@ use DiDom\Exceptions\InvalidSelectorException;
 
 class Parser extends \Parsers\BasicKpfuParser\Parser
 {
-    public $link = "https://kpfu.ru/chemistry/--2.html";
+    public $link = "https://kpfu.ru/library/--2.html";
 
 }
