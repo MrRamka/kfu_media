@@ -1,12 +1,12 @@
 <?php
 
-namespace Parsers\ChemistryParser;
+namespace Parsers\LawParser;
 
 use App\Abstracts\AbstractArticleParser;
 use App\MediaService\Article;
 use DiDom\Document;
 
-class ArticleParser extends \Parsers\BasicKpfuParser\ArticleParser
+class ArticleParser extends \Parsers\BasicKpfuParser\Parser
 {
 
 }

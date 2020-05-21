@@ -1,6 +1,6 @@
 <?php
 
-namespace Parsers\ChemistryParser;
+namespace Parsers\FpkParser;
 
 use App\Abstracts\AbstractArticleParser;
 use App\MediaService\Article;
