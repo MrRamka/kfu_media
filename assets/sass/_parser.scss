@@ -1,0 +1,93 @@
+.parsers {
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+
+
+  .parser {
+    position: relative;
+    padding: 16px;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border: none;
+    }
+  }
+
+  .parser-add-button {
+    display: inline-block;
+  }
+
+  .parser-info {
+    cursor: pointer;
+  }
+
+  .parser-name {
+    font-size: 22px;
+  }
+
+  .parser-enabled.enabled {
+    color: $green;
+  }
+
+  .parser-enabled.disabled {
+    color: $red;
+  }
+
+  .parser-alias {
+    color: #8e8e8e;
+    font-size: 18px;
+  }
+
+  .parser-expand {
+    position: absolute;
+    right: 16px;
+    top: 19px;
+
+    a {
+      height: 20px;
+      width: 20px;
+      background: url(/assets/img/arrow.svg) no-repeat;
+      display: block;
+      background-size: 20px;
+      transition: .5s;
+
+      &:hover {
+        width: 30px;
+        height: 30px;
+        background-size: 30px;
+        transform: translateX(5px) translateY(-5px);
+      }
+    }
+
+    &.show a {
+      transform: rotate(180deg) translateY(5px);
+    }
+  }
+
+  .parser-expanded {
+    display: none;
+    margin-top: 16px;
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .parser-message {
+    padding: 10px 0;
+    font-size: 14px;
+
+    &.error {
+      color: $red
+    }
+
+    &.success {
+      color: $green;
+    }
+  }
+
+  .parser-error {
+    color: $red;
+    font-size: 13px;
+  }
+}

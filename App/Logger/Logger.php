@@ -1,20 +1,16 @@
 <?php
 
 namespace App\Logger;
+
+use App\App;
+use App\Model\Log;
+
 class Logger
 {
     const LEVEL_ERROR = 1;
     const LEVEL_WARNING = 2;
     const LEVEL_INFO = 3;
     const LEVEL_DEBUG = 4;
-
-    private $_time;
-    private $_path = __DIR__ . '\logs\\';
-
-    function __construct()
-    {
-        $this->_time = date('d.m.Y H_i_s');
-    }
 
 
     /**
@@ -24,8 +20,7 @@ class Logger
      */
     private function add(string $message, int $level = self::LEVEL_DEBUG): void
     {
-        $log = '[' . date('H:i:s d.m.Y') . '] [' . self::level($level) . '] ' . $message . PHP_EOL;
-        file_put_contents($this->_path . $this->_time . '.txt', $log, FILE_APPEND);
+        Log::insert(['message' => $message, 'level' => $level, 'datetime' => date("Y-m-d H:i:s")]);
     }
 
     /**
@@ -63,7 +58,7 @@ class Logger
      * @param string $message
      * @param int $level
      */
-    public function degub(string $message): void
+    public function debug(string $message): void
     {
         $this->add($message, self::LEVEL_DEBUG);
     }
@@ -80,6 +75,21 @@ class Logger
             case 4:
             default:
                 return 'DEBUG';
+        }
+    }
+
+    public static function levelStyled(int $level): string
+    {
+        switch ($level) {
+            case 1:
+                return '<span class="log-error">ERROR</span>';
+            case 2:
+                return '<span class="log-warning">WARNING</span>';
+            case 3:
+                return '<span class="log-info">INFO</span>';
+            case 4:
+            default:
+                return '<span class="log-debug">DEBUG</span>';
         }
     }
 }

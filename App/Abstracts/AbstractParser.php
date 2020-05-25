@@ -9,6 +9,10 @@ namespace App\Abstracts;
 abstract class AbstractParser
 {
     /**
+    * @var array
+     */
+    public $data;
+    /**
      * @var string
      */
     public $link;

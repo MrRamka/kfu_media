@@ -1,0 +1,14 @@
+RewriteEngine ON
+
+RewriteRule ^parser/delete$ /index.php?path=parser/delete [L,QSA]
+RewriteRule ^parser/save$ /index.php?path=parser/save [L,QSA]
+RewriteRule ^parser$ /index.php?path=parser [L,QSA]
+RewriteRule ^process$ /index.php?path=process [L,QSA]
+RewriteRule ^process/article$ /index.php?path=process/article [L,QSA]
+RewriteRule ^process/parser$ /index.php?path=process/parser [L,QSA]
+RewriteRule ^settings/save$ /index.php?path=settings/save [L,QSA]
+RewriteRule ^settings/generate$ /index.php?path=settings/generate [L,QSA]
+RewriteRule ^settings$ /index.php?path=settings [L,QSA]
+RewriteRule ^log$ /index.php?path=log [L,QSA]
+RewriteRule ^stats$ /index.php?path=stats [L,QSA]
+RewriteRule ^$ /index.php [L,QSA]

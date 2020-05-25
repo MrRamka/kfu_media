@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\Actions\MainAction;
 use App\Logger\Logger;
 use App\MediaService\MediaService;
+use App\Model\Parser;
 use App\ProviderService\ProviderService;
 use GuzzleHttp\Client;
 
@@ -38,7 +38,12 @@ class App
      */
     public function getParsers(): array
     {
-        return self::$_config['parsers'];
+        $data = [];
+        $parsers = Parser::all(['enabled' => 1]);
+        foreach ($parsers as $parser)
+            $data[$parser['alias']] = $parser;
+
+        return $data;
     }
 
     /**
@@ -46,7 +51,8 @@ class App
      */
     public function run(): void
     {
-        $action = new MainAction();
+        $action =$this->route()->run();
+
         $action->run();
     }
 
@@ -60,6 +66,32 @@ class App
     {
         if ($this->_logger === null) $this->_logger = new Logger();
         return $this->_logger;
+    }
+
+
+    private $_route;
+
+    /**
+     * App router
+     * @return Route
+     */
+    public function route()
+    {
+        if ($this->_route === null) $this->_route = new Route();
+        return $this->_route;
+    }
+
+    private $_db;
+
+    /**
+     * DB access
+     * @return DB
+     * @throws \Exception
+     */
+    public function db()
+    {
+        if ($this->_db === null) $this->_db = new DB();
+        return $this->_db;
     }
 
     private $_media;
